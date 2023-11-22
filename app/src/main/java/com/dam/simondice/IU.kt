@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 /**
  * Interfaz de usuario
@@ -29,6 +30,8 @@ fun IU(vm: VM) {
  */
 @Composable
 fun Botonera(vm:VM) {
+    // definimos un scope para la IU
+    val iuScope = rememberCoroutineScope()
     // definimos un texto para el botón
     var texto = "Click me!"
     /**
@@ -38,9 +41,14 @@ fun Botonera(vm:VM) {
         modifier = Modifier
             .size((80).dp, (40).dp),
         onClick = {
-                    vm.espera(3000L)
-                    Log.d("corutina","IU no para!")
-                }
+            vm.espera(3000L)
+            Log.d("corutina","IU no para!")
+            iuScope.launch {
+                Log.d("corutina","IU: voy a parar 2sgs")
+                delay(2000L)
+                Log.d("corutina","Ahora sigo")
+            }
+        }
         ){
         Text(text = texto, fontSize = 10.sp)
     }
