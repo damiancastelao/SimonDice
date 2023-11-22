@@ -13,9 +13,10 @@ class MainActivity : ComponentActivity() {
     val TAG = "Juego MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val vm = VM()
         setContent {
                 // Interface de Usuario
-                IU()
+                IU(vm)
         }
 
         // test
