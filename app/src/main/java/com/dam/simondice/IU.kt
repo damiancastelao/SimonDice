@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.sp
 
 /**
  * Interfaz de usuario
+ * Modificado desde Code
  */
 
 @Composable
