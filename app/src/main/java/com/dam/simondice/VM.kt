@@ -1,6 +1,7 @@
 package com.dam.simondice
 
 import android.util.Log
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -15,8 +16,12 @@ class VM : ViewModel() {
      */
     fun espera(segundos: Long){
         viewModelScope.launch {
-            Log.d("corutina","Esperando en el Viewmodel...")
+            Log.d("corutina","Cambiando en el Viewmodel...")
+            Colores.CLASE_AMARILLO.color.value = Color.Red
             delay(segundos)
+            Colores.CLASE_AMARILLO.color.value = Color.Blue
+            delay(segundos)
+            Colores.CLASE_AMARILLO.color.value = Color.Yellow
             Log.d("corutina","Listo en el ViewModel!")
         }
     }

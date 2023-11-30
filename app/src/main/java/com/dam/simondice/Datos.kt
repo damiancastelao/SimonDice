@@ -1,5 +1,7 @@
 package com.dam.simondice
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 
 /**
@@ -36,9 +38,9 @@ enum class Estado {
  * Colores utilizados
  */
 
-enum class Colores(val color: Color, val txt: String) {
-    CLASE_ROJO(color = Color.Red, txt = "roxo"),
-    CLASE_VERDE(color = Color.Green, txt = "verde"),
-    CLASE_AZUL(color = Color.Blue, txt = "azul"),
-    CLASE_AMARILLO(color = Color.Yellow, txt = "melo")
+enum class Colores(val color: MutableState<Color>, val txt: String) {
+    CLASE_ROJO(color = mutableStateOf(Color.Red), txt = "roxo"),
+    CLASE_VERDE(color = mutableStateOf(Color.Green), txt = "verde"),
+    CLASE_AZUL(color = mutableStateOf(Color.Blue), txt = "azul"),
+    CLASE_AMARILLO(color = mutableStateOf(Color.Yellow), txt = "melo")
 }

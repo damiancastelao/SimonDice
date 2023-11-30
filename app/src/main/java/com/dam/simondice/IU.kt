@@ -2,6 +2,7 @@ package com.dam.simondice
 
 
 import android.util.Log
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -24,6 +25,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun IU(vm: VM) {
     Botonera(vm)
+    Boton(enum_color = Colores.CLASE_AMARILLO)
 }
 
 /**
@@ -41,9 +43,10 @@ fun Botonera(vm:VM) {
     Button(
         modifier = Modifier
             .size((120).dp, (40).dp),
+
         onClick = {
 
-                vm.espera(3000L)
+                vm.espera(2000L)
                 Log.d("corutina", "IU no para!")
                 iuScope.launch {
                     Log.d("corutina", "IU: voy a parar 2sgs")
@@ -64,9 +67,10 @@ fun Botonera(vm:VM) {
 fun Boton(enum_color: Colores) {
     Button(
         // utilizamos el color del enum
-        colors =  ButtonDefaults.buttonColors(enum_color.color),
+        colors =  ButtonDefaults.buttonColors(enum_color.color.value),
         onClick = { /*TODO*/ },
         modifier = Modifier
+            .padding(100.dp)
             .size((80).dp, (40).dp)
     ) {
         // utilizamos el texto del enum
