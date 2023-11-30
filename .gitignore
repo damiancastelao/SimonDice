@@ -1,0 +1,12 @@
+app/src/androidTest/java/com/dam/simondice
+app/src/test/java/com/dam/simondice
+*.iml
+.gradle
+/local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+.idea/

@@ -8,6 +8,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,24 +34,28 @@ fun Botonera(vm:VM) {
     // definimos un scope para la IU
     val iuScope = rememberCoroutineScope()
     // definimos un texto para el botón
-    var texto = "Click me!"
+    var texto = remember { mutableStateOf("Click me!") }
     /**
      * Botón para probar las corutinas
      */
     Button(
         modifier = Modifier
-            .size((80).dp, (40).dp),
+            .size((120).dp, (40).dp),
         onClick = {
-            vm.espera(3000L)
-            Log.d("corutina","IU no para!")
-            iuScope.launch {
-                Log.d("corutina","IU: voy a parar 2sgs")
-                delay(2000L)
-                Log.d("corutina","Ahora sigo")
-            }
+
+                vm.espera(3000L)
+                Log.d("corutina", "IU no para!")
+                iuScope.launch {
+                    Log.d("corutina", "IU: voy a parar 2sgs")
+                    texto.value = "Voy a parar"
+                    delay(5000L)
+                    Log.d("corutina", "Ahora sigo")
+                    texto.value = "Sigo!"
+                }
+            
         }
         ){
-        Text(text = texto, fontSize = 10.sp)
+        Text(text = texto.value, fontSize = 10.sp)
     }
 }
 
